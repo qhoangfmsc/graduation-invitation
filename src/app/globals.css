@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-script: var(--font-script);
+  --font-playfair: var(--font-playfair);
+  --font-jost: var(--font-jost);
+  --font-brother-sign: var(--font-brother-sign);
+}
+
+:root {
+  --background: #1c0509;
+  --foreground: #f3e6d0;
+  --maroon-950: #1c0509;
+  --maroon-900: #2c0a10;
+  --maroon-800: #3d0f16;
+  --maroon-700: #521521;
+  --cream: #f3e6d0;
+  --cream-dim: #d9c5a0;
+  --gold: #cc9f5f;
+  --gold-soft: #e3c98d;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-jost), Arial, Helvetica, sans-serif;
+}
+
+@keyframes hint-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(4px);
+  }
+}
+
+@keyframes sparkle-drift {
+  0% {
+    transform: translateY(0) translateX(0) scale(0.5);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.9;
+  }
+  88% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-70vh) translateX(var(--drift, 20px)) scale(1);
+    opacity: 0;
+  }
+}
+
+.animate-hint-pulse {
+  animation: hint-pulse 1.8s ease-in-out infinite;
+}
+
+.animate-sparkle {
+  animation: sparkle-drift linear infinite;
+}
