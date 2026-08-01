@@ -34,7 +34,7 @@ export default function CreateInvitationPage() {
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          placeholder="Ví dụ: Nguyễn Quốc Hoàng"
+          placeholder="Ví dụ: Nguyễn Hoàng Nguyên"
           autoFocus
           className="mt-6 w-full rounded-[2px] border border-(--gold)/30 bg-(--maroon-950)/60 px-4 py-3 text-center font-jost text-sm text-(--cream) placeholder:text-(--cream-dim)/50 outline-none focus:border-(--gold-soft)"
         />
