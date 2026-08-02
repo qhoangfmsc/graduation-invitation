@@ -29,16 +29,16 @@ const brotherSignature = localFont({
 
 export const metadata: Metadata = {
   title: "Thiệp mời tốt nghiệp | Nguyễn Hoàng Nguyên",
-  description: "Thiệp mời lễ tốt nghiệp của Nguyễn Hoàng Nguyên",
+  description: "Thân mời cục cưng đến dự lễ tốt nghiệp",
   openGraph: {
     title: "Thiệp mời tốt nghiệp | Nguyễn Hoàng Nguyên",
-    description: "Thiệp mời lễ tốt nghiệp của Nguyễn Hoàng Nguyên",
+    description: "Thân mời cục cưng đến dự lễ tốt nghiệp",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Thiệp mời tốt nghiệp | Nguyễn Hoàng Nguyên",
-    description: "Thiệp mời lễ tốt nghiệp của Nguyễn Hoàng Nguyên",
+    description: "Thân mời cục cưng đến dự lễ tốt nghiệp",
   },
 };
 
