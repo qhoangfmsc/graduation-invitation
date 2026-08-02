@@ -21,7 +21,7 @@ export default function Invitation({
   const [open, setOpen] = useState(false);
 
   return (
-    <section className="relative flex min-h-dvh w-full flex-1 items-center justify-center overflow-hidden bg-(--maroon-950) px-4 py-12">
+    <section className="relative flex h-full w-full flex-1 items-center justify-center overflow-hidden bg-(--maroon-950) px-4 py-[clamp(0.5rem,4dvh,3rem)]">
       <BackgroundDecor />
 
       <div className="relative z-10 grid w-full max-w-95 place-items-center">
@@ -30,22 +30,22 @@ export default function Invitation({
           onClick={() => setOpen(true)}
           aria-label="Xem thiệp mời"
           tabIndex={open ? -1 : 0}
-          className={`col-start-1 row-start-1 flex w-full flex-col items-center gap-8 transition-all duration-700 ease-out ${
+          className={`col-start-1 row-start-1 flex w-full flex-col items-center gap-[clamp(0.5rem,2.5dvh,2rem)] transition-all duration-700 ease-out ${
             open
               ? "pointer-events-none scale-90 opacity-0"
               : "scale-100 opacity-100"
           }`}
         >
-          <p className="font-script text-2xl text-(--cream-dim)">
+          <p className="font-script text-[clamp(1rem,3dvh,1.5rem)] text-(--cream-dim)">
             Tui sắp tốt nghiệp rùi kkk
           </p>
-          <h1 className="text-center font-brother-sign text-[56px] leading-tight text-(--cream) sm:text-[46px]">
+          <h1 className="text-center font-brother-sign text-[clamp(2rem,7dvh,56px)] leading-tight text-(--cream)">
             {data.name}
           </h1>
 
           <PhotoboothStrip />
 
-          <p className="font-script text-2xl text-(--gold-soft) sm:text-3xl">
+          <p className="font-script text-[clamp(1rem,3dvh,1.5rem)] text-(--gold-soft) sm:text-[clamp(1rem,3dvh,1.875rem)]">
             Thân mời {guestName || "cục cưng"} đến dự lễ tốt nghiệp
           </p>
 
@@ -91,7 +91,7 @@ function InvitationCard({
   ];
 
   return (
-    <div className="relative w-full overflow-hidden rounded-[3px] border border-(--gold)/30 bg-linear-to-b from-(--maroon-900) via-(--maroon-950) to-(--maroon-900) px-6 pb-7 pt-7 shadow-[0_30px_70px_-20px_rgba(0,0,0,0.75)] sm:px-8">
+    <div className="relative w-full overflow-hidden rounded-[3px] border border-(--gold)/30 bg-linear-to-b from-(--maroon-900) via-(--maroon-950) to-(--maroon-900) px-6 pb-[clamp(0.75rem,3dvh,1.75rem)] pt-[clamp(0.75rem,3dvh,1.75rem)] shadow-[0_30px_70px_-20px_rgba(0,0,0,0.75)] sm:px-8">
       <CornerOrnament className="left-2 top-2" />
       <CornerOrnament className="right-2 top-2 rotate-90" />
       <CornerOrnament className="bottom-2 left-2 -rotate-90" />
@@ -104,7 +104,7 @@ function InvitationCard({
       </FadeChild>
 
       <FadeChild open={open} delay={80}>
-        <h1 className="mt-2 text-center font-script text-[26px] leading-tight text-(--cream) sm:text-[30px]">
+        <h1 className="mt-2 text-center font-script text-[clamp(1.25rem,4dvh,30px)] leading-tight text-(--cream)">
           {data.name}
         </h1>
       </FadeChild>
@@ -112,7 +112,7 @@ function InvitationCard({
       <FadeChild
         open={open}
         delay={180}
-        className="mt-6 flex items-center justify-center gap-3"
+        className="mt-[clamp(0.75rem,2.5dvh,1.5rem)] flex items-center justify-center gap-3"
       >
         <span className="h-px w-10 bg-(--gold)/40" />
         <span className="text-(--gold-soft)">✦</span>
@@ -120,21 +120,25 @@ function InvitationCard({
       </FadeChild>
 
       <FadeChild open={open} delay={240}>
-        <p className="mt-4 text-center font-playfair text-sm italic text-(--cream-dim)">
+        <p className="mt-[clamp(0.5rem,1.5dvh,1rem)] text-center font-playfair text-sm italic text-(--cream-dim)">
           {data.schoolLine}
         </p>
       </FadeChild>
 
       {guestName && (
-        <FadeChild open={open} delay={300} className="mt-4 text-center">
-          <p className="font-script text-lg text-(--cream) sm:text-xl">
+        <FadeChild
+          open={open}
+          delay={300}
+          className="mt-[clamp(0.5rem,1.5dvh,1rem)] text-center"
+        >
+          <p className="font-script text-[clamp(0.9rem,2.5dvh,1.125rem)] text-(--cream) sm:text-[clamp(0.9rem,2.5dvh,1.25rem)]">
             Mời <span className="text-(--gold-soft)">{guestName}</span> đến
             tham dự lễ tốt nghiệp
           </p>
         </FadeChild>
       )}
 
-      <div className="mt-6 space-y-2.5">
+      <div className="mt-[clamp(0.75rem,2dvh,1.5rem)] space-y-[clamp(0.375rem,1dvh,0.625rem)]">
         {lines.map((line, i) => (
           <FadeChild key={line.label} open={open} delay={370 + i * 70}>
             <div className="flex items-baseline justify-center gap-2 font-jost text-[13px] text-(--cream)">
@@ -148,13 +152,20 @@ function InvitationCard({
         ))}
       </div>
 
-      <FadeChild open={open} delay={610} className="mt-7 text-center">
-        <p className="font-script text-xl text-(--gold-soft)">
+      <FadeChild
+        open={open}
+        delay={610}
+        className="mt-[clamp(0.75rem,2.5dvh,1.75rem)] text-center"
+      >
+        <p className="font-script text-[clamp(1rem,3dvh,1.25rem)] text-(--gold-soft)">
           Rất mong được đón tiếp bạn
         </p>
       </FadeChild>
 
-      <FadeChild open={open} delay={670} className="mt-6 flex justify-center">
+      <FadeChild
+        open={open}
+        delay={670}
+        className="mt-[clamp(0.5rem,1.5dvh,1.5rem)] flex justify-center">
         <button
           type="button"
           onClick={onClose}
@@ -198,7 +209,7 @@ function PhotoboothStrip() {
   const translateY = -100 + (step / STRIP_SLIDE_STEPS) * 100;
 
   return (
-    <div className="relative mx-auto w-[50%]">
+    <div className="relative mx-auto w-[min(50%,24dvh)]">
       <Image
         src="/photobooth_output_slot.png"
         alt="Khay xuất ảnh"

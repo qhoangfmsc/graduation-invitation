@@ -30,6 +30,16 @@ const brotherSignature = localFont({
 export const metadata: Metadata = {
   title: "Thiệp mời tốt nghiệp | Nguyễn Hoàng Nguyên",
   description: "Thiệp mời lễ tốt nghiệp của Nguyễn Hoàng Nguyên",
+  openGraph: {
+    title: "Thiệp mời tốt nghiệp | Nguyễn Hoàng Nguyên",
+    description: "Thiệp mời lễ tốt nghiệp của Nguyễn Hoàng Nguyên",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Thiệp mời tốt nghiệp | Nguyễn Hoàng Nguyên",
+    description: "Thiệp mời lễ tốt nghiệp của Nguyễn Hoàng Nguyên",
+  },
 };
 
 export default function RootLayout({
@@ -40,9 +50,9 @@ export default function RootLayout({
   return (
     <html
       lang="vi"
-      className={`h-full antialiased ${playfair.variable} ${dancingScript.variable} ${beVietnamPro.variable} ${brotherSignature.variable}`}
+      className={`h-dvh overflow-hidden antialiased ${playfair.variable} ${dancingScript.variable} ${beVietnamPro.variable} ${brotherSignature.variable}`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="flex h-full flex-col overflow-hidden">
         {children}
         <BackgroundMusic />
       </body>

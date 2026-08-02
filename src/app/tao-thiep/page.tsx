@@ -6,22 +6,34 @@ import { useState } from "react";
 export default function CreateInvitationPage() {
   const router = useRouter();
   const [name, setName] = useState("");
+  const [link, setLink] = useState<string | null>(null);
+  const [copied, setCopied] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const trimmed = name.trim();
     if (!trimmed) return;
-    router.push(`/?invited=${encodeURIComponent(trimmed)}`);
+    setLink(`${window.location.origin}/?invited=${encodeURIComponent(trimmed)}`);
+    setCopied(false);
+  };
+
+  const handleCopy = async () => {
+    if (!link) return;
+    await navigator.clipboard.writeText(link);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handlePreview = () => {
+    if (!link) return;
+    router.push(link.slice(window.location.origin.length));
   };
 
   return (
-    <section className="relative flex min-h-dvh w-full flex-1 items-center justify-center overflow-hidden bg-(--maroon-950) px-4 py-12">
+    <section className="relative flex h-full w-full flex-1 items-center justify-center overflow-hidden bg-(--maroon-950) px-4 py-[clamp(0.5rem,4dvh,3rem)]">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_90%_at_50%_0%,rgba(204,159,95,0.14),transparent_60%)]" />
 
-      <form
-        onSubmit={handleSubmit}
-        className="relative z-10 w-full max-w-95 rounded-[3px] border border-(--gold)/30 bg-linear-to-b from-(--maroon-900) via-(--maroon-950) to-(--maroon-900) px-6 py-8 shadow-[0_30px_70px_-20px_rgba(0,0,0,0.75)] sm:px-8"
-      >
+      <div className="relative z-10 w-full max-w-95 rounded-[3px] border border-(--gold)/30 bg-linear-to-b from-(--maroon-900) via-(--maroon-950) to-(--maroon-900) px-6 py-8 shadow-[0_30px_70px_-20px_rgba(0,0,0,0.75)] sm:px-8">
         <p className="text-center font-jost text-[10px] uppercase tracking-[0.4em] text-(--gold-soft)">
           Tạo thiệp mời
         </p>
@@ -30,23 +42,54 @@ export default function CreateInvitationPage() {
           Nhập tên người bạn mà Nai muốn mời
         </h1>
 
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Ví dụ: Nguyễn Hoàng Nguyên"
-          autoFocus
-          className="mt-6 w-full rounded-[2px] border border-(--gold)/30 bg-(--maroon-950)/60 px-4 py-3 text-center font-jost text-sm text-(--cream) placeholder:text-(--cream-dim)/50 outline-none focus:border-(--gold-soft)"
-        />
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => {
+              setName(e.target.value);
+              setLink(null);
+            }}
+            placeholder="Ví dụ: Nguyễn Hoàng Nguyên"
+            autoFocus
+            className="mt-6 w-full rounded-xs border border-(--gold)/30 bg-(--maroon-950)/60 px-4 py-3 text-center font-jost text-sm text-(--cream) placeholder:text-(--cream-dim)/50 outline-none focus:border-(--gold-soft)"
+          />
 
-        <button
-          type="submit"
-          disabled={!name.trim()}
-          className="mt-6 w-full rounded-[2px] border border-(--gold)/50 bg-(--gold)/10 py-3 font-jost text-[11px] uppercase tracking-[0.3em] text-(--gold-soft) transition-colors hover:bg-(--gold)/20 disabled:cursor-not-allowed disabled:opacity-40"
-        >
-          Tạo thiệp mời
-        </button>
-      </form>
+          <button
+            type="submit"
+            disabled={!name.trim()}
+            className="mt-6 w-full rounded-xs border border-(--gold)/50 bg-(--gold)/10 py-3 font-jost text-[11px] uppercase tracking-[0.3em] text-(--gold-soft) transition-colors hover:bg-(--gold)/20 disabled:cursor-not-allowed disabled:opacity-40"
+          >
+            Tạo thiệp mời
+          </button>
+        </form>
+
+        {link && (
+          <div className="mt-6 border-t border-(--gold)/20 pt-6">
+            <p className="break-all rounded-xs border border-(--gold)/20 bg-(--maroon-950)/60 px-3 py-2 text-center font-jost text-xs text-(--cream-dim)">
+              {link}
+            </p>
+
+            <div className="mt-4 flex gap-3">
+              <button
+                type="button"
+                onClick={handleCopy}
+                className="flex-1 rounded-xs border border-(--gold)/50 bg-(--gold)/10 py-3 font-jost text-[11px] uppercase tracking-[0.3em] text-(--gold-soft) transition-colors hover:bg-(--gold)/20"
+              >
+                {copied ? "Đã sao chép" : "Copy link"}
+              </button>
+
+              <button
+                type="button"
+                onClick={handlePreview}
+                className="flex-1 rounded-xs border border-(--gold-soft)/60 bg-(--gold-soft)/15 py-3 font-jost text-[11px] uppercase tracking-[0.3em] text-(--cream) transition-colors hover:bg-(--gold-soft)/25"
+              >
+                Xem thử
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
     </section>
   );
 }
