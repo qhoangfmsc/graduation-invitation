@@ -5,6 +5,8 @@
   --font-playfair: var(--font-playfair);
   --font-jost: var(--font-jost);
   --font-brother-sign: var(--font-brother-sign);
+  --font-typewriter-sign: var(--font-typewriter-sign);
+  --font-typewriter-vl-sign: var(--font-typewriter-vl-sign);
 }
 
 :root {

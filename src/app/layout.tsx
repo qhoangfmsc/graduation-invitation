@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Dancing_Script, Be_Vietnam_Pro } from "next/font/google";
+import {
+  Playfair_Display,
+  Dancing_Script,
+  Be_Vietnam_Pro,
+} from "next/font/google";
 import localFont from "next/font/local";
 import BackgroundMusic from "./background-music";
 import "./globals.css";
@@ -27,6 +31,18 @@ const brotherSignature = localFont({
   display: "swap",
 });
 
+const typeWriterSignature = localFont({
+  src: "../assets/fonts/Secret Service Typewriter Regular.ttf",
+  variable: "--font-typewriter-sign",
+  display: "swap",
+});
+
+const typeWriterVLSignature = localFont({
+  src: "../assets/fonts/VL TypewriterBasiX-Regular.ttf",
+  variable: "--font-typewriter-vl-sign",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "Thiệp mời tốt nghiệp | Nguyễn Hoàng Nguyên",
   description: "Thân mời cục cưng đến dự lễ tốt nghiệp",
@@ -50,7 +66,7 @@ export default function RootLayout({
   return (
     <html
       lang="vi"
-      className={`h-dvh overflow-hidden antialiased ${playfair.variable} ${dancingScript.variable} ${beVietnamPro.variable} ${brotherSignature.variable}`}
+      className={`h-dvh overflow-hidden antialiased ${playfair.variable} ${dancingScript.variable} ${beVietnamPro.variable} ${brotherSignature.variable} ${typeWriterSignature.variable} ${typeWriterVLSignature.variable}`}
     >
       <body className="flex h-full flex-col overflow-hidden">
         {children}

@@ -13,7 +13,9 @@ export default function CreateInvitationPage() {
     e.preventDefault();
     const trimmed = name.trim();
     if (!trimmed) return;
-    setLink(`${window.location.origin}/?invited=${encodeURIComponent(trimmed)}`);
+    setLink(
+      `${window.location.origin}/?invited=${encodeURIComponent(trimmed)}`,
+    );
     setCopied(false);
   };
 
@@ -34,11 +36,11 @@ export default function CreateInvitationPage() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_90%_at_50%_0%,rgba(204,159,95,0.14),transparent_60%)]" />
 
       <div className="relative z-10 w-full max-w-95 rounded-[3px] border border-(--gold)/30 bg-linear-to-b from-(--maroon-900) via-(--maroon-950) to-(--maroon-900) px-6 py-8 shadow-[0_30px_70px_-20px_rgba(0,0,0,0.75)] sm:px-8">
-        <p className="text-center font-jost text-[10px] uppercase tracking-[0.4em] text-(--gold-soft)">
+        <p className="font-jost text-center text-[10px] tracking-[0.4em] text-(--gold-soft) uppercase">
           Tạo thiệp mời
         </p>
 
-        <h1 className="mt-3 text-center font-script text-2xl text-(--cream) sm:text-3xl">
+        <h1 className="font-script mt-3 text-center text-2xl text-(--cream) sm:text-3xl">
           Nhập tên người bạn mà Nai muốn mời
         </h1>
 
@@ -52,13 +54,13 @@ export default function CreateInvitationPage() {
             }}
             placeholder="Ví dụ: Nguyễn Hoàng Nguyên"
             autoFocus
-            className="mt-6 w-full rounded-xs border border-(--gold)/30 bg-(--maroon-950)/60 px-4 py-3 text-center font-jost text-sm text-(--cream) placeholder:text-(--cream-dim)/50 outline-none focus:border-(--gold-soft)"
+            className="font-jost mt-6 w-full rounded-xs border border-(--gold)/30 bg-(--maroon-950)/60 px-4 py-3 text-center text-sm text-(--cream) outline-none placeholder:text-(--cream-dim)/50 focus:border-(--gold-soft)"
           />
 
           <button
             type="submit"
             disabled={!name.trim()}
-            className="mt-6 w-full rounded-xs border border-(--gold)/50 bg-(--gold)/10 py-3 font-jost text-[11px] uppercase tracking-[0.3em] text-(--gold-soft) transition-colors hover:bg-(--gold)/20 disabled:cursor-not-allowed disabled:opacity-40"
+            className="font-jost mt-6 w-full rounded-xs border border-(--gold)/50 bg-(--gold)/10 py-3 text-[11px] tracking-[0.3em] text-(--gold-soft) uppercase transition-colors hover:bg-(--gold)/20 disabled:cursor-not-allowed disabled:opacity-40"
           >
             Tạo thiệp mời
           </button>
@@ -66,7 +68,7 @@ export default function CreateInvitationPage() {
 
         {link && (
           <div className="mt-6 border-t border-(--gold)/20 pt-6">
-            <p className="break-all rounded-xs border border-(--gold)/20 bg-(--maroon-950)/60 px-3 py-2 text-center font-jost text-xs text-(--cream-dim)">
+            <p className="font-jost rounded-xs border border-(--gold)/20 bg-(--maroon-950)/60 px-3 py-2 text-center text-xs break-all text-(--cream-dim)">
               {link}
             </p>
 
@@ -74,7 +76,7 @@ export default function CreateInvitationPage() {
               <button
                 type="button"
                 onClick={handleCopy}
-                className="flex-1 rounded-xs border border-(--gold)/50 bg-(--gold)/10 py-3 font-jost text-[11px] uppercase tracking-[0.3em] text-(--gold-soft) transition-colors hover:bg-(--gold)/20"
+                className="font-jost flex-1 rounded-xs border border-(--gold)/50 bg-(--gold)/10 py-3 text-[11px] tracking-[0.3em] text-(--gold-soft) uppercase transition-colors hover:bg-(--gold)/20"
               >
                 {copied ? "Đã sao chép" : "Copy link"}
               </button>
@@ -82,7 +84,7 @@ export default function CreateInvitationPage() {
               <button
                 type="button"
                 onClick={handlePreview}
-                className="flex-1 rounded-xs border border-(--gold-soft)/60 bg-(--gold-soft)/15 py-3 font-jost text-[11px] uppercase tracking-[0.3em] text-(--cream) transition-colors hover:bg-(--gold-soft)/25"
+                className="font-jost flex-1 rounded-xs border border-(--gold-soft)/60 bg-(--gold-soft)/15 py-3 text-[11px] tracking-[0.3em] text-(--cream) uppercase transition-colors hover:bg-(--gold-soft)/25"
               >
                 Xem thử
               </button>
