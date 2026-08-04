@@ -103,9 +103,9 @@ function InvitationCard({
         <FadeChild
           open={open}
           delay={110}
-          className="pointer-events-none absolute -top-1 -right-11 z-50 w-[36%] origin-top-right rotate-[-2deg]"
+          className="pointer-events-none absolute -top-1 -right-1 z-50 w-[36%] origin-top-right rotate-[-2deg]"
         >
-          <Image
+          <img
             src="/sash.png"
             alt=""
             width={600}
@@ -198,7 +198,7 @@ function InvitationCard({
           delay={90}
           className="pointer-events-none absolute top-0.5 -right-1 z-30 w-[55%] origin-top-right"
         >
-          <Image
+          <img
             src="/locket.png"
             alt=""
             width={900}
