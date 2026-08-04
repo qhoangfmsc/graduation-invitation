@@ -31,7 +31,7 @@ export default function Invitation({
           onClick={() => setOpen(true)}
           aria-label="Xem thiệp mời"
           tabIndex={open ? -1 : 0}
-          className={`col-start-1 row-start-1 flex w-full flex-col items-center gap-[clamp(0.5rem,2.5dvh,2rem)] transition-all duration-700 ease-out ${
+          className={`col-start-1 row-start-1 flex w-full flex-col items-center gap-2 transition-all duration-700 ease-out ${
             open
               ? "pointer-events-none scale-90 opacity-0"
               : "scale-100 opacity-100"
@@ -105,10 +105,10 @@ function InvitationCard({
           delay={110}
           className="pointer-events-none absolute -top-1 -right-9 z-50 w-[36%] origin-top-right rotate-[-2deg]"
         >
-          <img
+          <Image
             src="/sash.png"
             alt=""
-            width={500}
+            width={600}
             height={1600}
             className="h-auto w-full select-none"
           />
@@ -125,9 +125,11 @@ function InvitationCard({
               >
                 <div className="flex flex-row">
                   <div className="my-2 flex w-1/2 flex-col">
-                    <div className="flex items-baseline justify-between gap-2 border border-[#2c14115c] px-0.5 py-1.5">
-                      <span>Thân mời:</span>
-                      <span>{guestName || "Cục cưng"}</span>
+                    <div className="flex flex-col items-baseline justify-between gap-2 border border-[#2c14115c] px-0.5 py-1.5">
+                      <div>Thân mời:</div>
+                      <div className="w-full text-center text-[13px] uppercase">
+                        {guestName || "Cục cưng"}
+                      </div>
                     </div>
                     <div className="flex items-baseline justify-between gap-2 border border-t-0 border-[#2c14115c] px-0.5 py-1">
                       <span>Ngày:</span>
@@ -281,7 +283,9 @@ function PhotoSlide() {
           timeoutId = setTimeout(() => {
             setInstant(true);
             setIndex(0);
-            requestAnimationFrame(() => setInstant(false));
+            requestAnimationFrame(() => {
+              requestAnimationFrame(() => setInstant(false));
+            });
             step(0);
           }, 1300);
         } else {
